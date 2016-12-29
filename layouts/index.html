@@ -25,7 +25,6 @@
       </div>
     </header>
 
-
     <div role="main" class="container">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -44,11 +43,28 @@
               </a>
 
               <p class="post-meta">
-                Posted on {{ .Date.Format "January 2, 2006" }}
+                Posted on {{ .Date.Format "2. January 2006" }}
+				
+				{{ if isset .Params "tags" }}	<br/>
+					{{ range .Params.tags }}
+					<a class="label" href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+					{{ end }}
+				{{ end }}
+				
+				{{ if isset .Params "categories" }}	<br/>
+					{{ range .Params.categories }}
+						<a class="label" href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+					{{ end }}
+				{{ end }}
+				
               </p>
-            
-              <div class="post-entry">
-                {{ .Summary }}
+
+              <div class="post-entry">              
+			  {{ if .Params.kurz }} 
+				{{ .Params.kurz }} 
+			  {{ else }} 
+			    {{ .Summary }} 
+			  {{ end }}
           	  <a href="{{ .Permalink }}" class="post-read-more">[Read&nbsp;More]</a>
               </div>
             

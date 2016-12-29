@@ -1,0 +1,18 @@
+<div id="main">
+	<div id="content">
+		<div>
+			<article role="article">
+				<div id="blog-archives" class="category">
+					{{ .Content }}  
+					{{ range (where .Site.Pages "Type" "post") }}
+							<h2>
+								{{ .Date | dateFormat "2006"}} {{ .Date | dateFormat "Jan" }}
+								<a href="{{ .Permalink }}" style="float: right;" title="{{ .Title }}"> {{ .Title }}</a>
+							</h2>
+					{{ end }}
+				</div>
+			</article>
+		</div>
+	</div>
+</div>
+

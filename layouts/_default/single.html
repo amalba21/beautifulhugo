@@ -13,7 +13,9 @@
         {{ partial "post.html" . }}
       {{ else if eq .Type "page" }}
         {{ partial "page.html" . }}
-      {{ else }}
+      {{ else if eq .Type "list" }}
+        {{ partial "list.html" . }}
+	  {{ else }}
         NO MATCHING PARTIAL
       {{ end }}
 
